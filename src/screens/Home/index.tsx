@@ -7,7 +7,11 @@ import { Participant } from '../../components/Participant';
 export function Home() {
 
   function handleParticipantAdd() {
-    console.log("Você clicou no botão!")
+    console.log("Adicionar participante");
+  }
+
+  function handleParticipantRemove() {
+    console.log("Remover participante");
   }
 
   return (
@@ -34,9 +38,7 @@ export function Home() {
         </TouchableOpacity>
       </View>
 
-      <Participant />
-      <Participant />
-      <Participant />
+      <Participant name="Lisandra Cristina" onRemove={handleParticipantRemove}/>
     </View>
   )
 }
