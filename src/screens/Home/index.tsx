@@ -1,4 +1,6 @@
-import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
+import { useState } from 'react';
+
+import { Text, View, TextInput, TouchableOpacity, FlatList, Alert } from 'react-native';
 
 import { styles } from './styles';
 
@@ -6,16 +8,31 @@ import { Participant } from '../../components/Participant';
 
 export function Home() {
 
-  const participants = [
-    'Lisandra', 'Levy', 'Fernando', 'Nathalia', 'Vitor', 'Rodrigo', 'Diego', 'Mayk', 'Jack', 'Sebastião', 'Alysson', 'Max'
-  ]
+  const [participants, setParticipants] = useState<string[]>([]);
+  const [participantName, setParticipantName] = useState('');
+
 
   function handleParticipantAdd() {
-    console.log("Add participant");
+    if(participants.includes(participantName)){
+      return Alert.alert("Participante cadastrado anteriormente", "Já existe uma pessoa com esse nome na lista.")
+    }
+
+    setParticipants(prevState => [...prevState, participantName]);
+    setParticipantName('');
   }
 
-  function handleParticipantRemove() {
-    console.log("Remove participant");
+  function handleParticipantRemove(name: string) {
+
+    Alert.alert('Remover participante', `Deseja remover ${name} da lista?`, [
+      {
+        text: 'Sim',
+        onPress: () => setParticipants(prevState => prevState.filter(participant => participant !== name))
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
+    ]);
   }
 
   return (
@@ -33,6 +50,8 @@ export function Home() {
           style={styles.input}
           placeholder="Digite seu nome"
           placeholderTextColor="#B6B6B6"
+          onChangeText={setParticipantName}
+          value={participantName}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
@@ -49,7 +68,7 @@ export function Home() {
           <Participant
             key={item}
             name={item}
-            onRemove={handleParticipantRemove}
+            onRemove={() => handleParticipantRemove(item)}
           />
         )}
         showsVerticalScrollIndicator={false}
