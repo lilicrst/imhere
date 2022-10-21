@@ -6,15 +6,19 @@ This is my first React Native project. I applied the basic knowledge to make an 
 
 ## Layout and functions
 
-![Empty list](/readme/home.jpg)
-![List](/readme/home_1.jpg)
-![FlatList](/readme/home_2.jpg)
+<p align="center">
+  <img src="https://github.com/lilicrst/imhere/blob/master/readme/home.jpg" width="200" />
+  <img src="https://github.com/lilicrst/imhere/blob/master/readme/home_1.jpg" width="200" />
+  <img src="https://github.com/lilicrst/imhere/blob/master/readme/home_2.jpg" width="200" />
+</p>
 
 
 It is possible to add and remove participants.
 
-![Alert](/readme/alert_1.jpg)
-![Alert](/readme/home_1.jpg)
+<p align="center">
+  <img src="https://github.com/lilicrst/imhere/blob/master/readme/alert.jpg" width="200" />
+  <img src="https://github.com/lilicrst/imhere/blob/master/readme/alert_1.jpg" width="200"/>
+</p>
 
 
 There are alerts for delete confirmation and repeated keys.
